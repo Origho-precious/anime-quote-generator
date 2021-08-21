@@ -4,6 +4,7 @@ import { useSetRecoilState } from "recoil";
 import axios from "axios";
 import Homepage from "./pages/home";
 import { animeTitles } from "./store";
+import Animepage from "./pages/anime";
 
 const App = () => {
 	const setTitles = useSetRecoilState(animeTitles);
@@ -29,7 +30,7 @@ const App = () => {
 		<BrowserRouter>
 			<Switch>
 				<Route exact path="/" component={Homepage} />
-				<Route exact path="/anime/:name" component={Homepage} />
+				<Route exact path="/anime/:name" component={Animepage} />
 			</Switch>
 		</BrowserRouter>
 	);

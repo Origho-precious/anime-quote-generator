@@ -6,7 +6,7 @@ import Quote from "../../components/Quote/Quote";
 import { slicedAnimeTitles, animeTitles } from "../../store";
 
 const Homepage = () => {
-	const animes = useRecoilValue(animeTitles)
+	const animes = useRecoilValue(animeTitles);
 	const slicedAnimes = useRecoilValue(slicedAnimeTitles);
 	const colors = ["#FAE1DA", "#E8C6AD", "#F2E2ED", "#D6EBE4", "#BFDCD0"];
 
@@ -24,13 +24,19 @@ const Homepage = () => {
 				<Quote />
 				<div className="animes">
 					<h3>All Animes</h3>
-					<p>Click on any anime to see a quote from it</p>
+					{animes?.length ? (
+						<p>Click on any anime to see a quote from it</p>
+					) : null}
 					<div className="flex">
-						{slicedAnimes.slice(0, 50)?.map((anime) => (
-							<div key={anime} style={{ margin: "0 1.2rem 1.2rem 0" }}>
-								<AnimePill anime={anime} color={generateColor()} />
-							</div>
-						))}
+						{animes?.length ? (
+							slicedAnimes?.map((anime) => (
+								<div key={anime} style={{ margin: "0 1.2rem 1.2rem 0" }}>
+									<AnimePill anime={anime} color={generateColor()} />
+								</div>
+							))
+						) : (
+							<p className="nodata">No anime found 😞 </p>
+						)}
 					</div>
 					{animes?.length > 50 ? (
 						<div className="pagination">
@@ -75,6 +81,11 @@ const StyledHomePage = styled.div`
 		& > .flex {
 			display: flex;
 			flex-wrap: wrap;
+
+			& > .nodata {
+				margin: 2rem 0 4rem;
+				font-size: 1.3rem;
+			}
 		}
 
 		& .pagination {

@@ -1,7 +1,30 @@
+import { useEffect } from "react";
 import { BrowserRouter, Route, Switch } from "react-router-dom";
+import { useSetRecoilState } from "recoil";
+import axios from "axios";
 import Homepage from "./pages/home";
+import { animeTitles } from "./store";
 
 const App = () => {
+	const setTitles = useSetRecoilState(animeTitles);
+
+	const fetchAnimes = async () => {
+		try {
+			const res = await axios.get(
+				"https://animechan.vercel.app/api/available/anime"
+			);
+
+			setTitles(res?.data);
+		} catch (error) {
+			console.log(error?.response?.data?.error);
+		}
+	};
+
+	useEffect(() => {
+		fetchAnimes();
+	// eslint-disable-next-line react-hooks/exhaustive-deps
+	}, []);
+
 	return (
 		<BrowserRouter>
 			<Switch>

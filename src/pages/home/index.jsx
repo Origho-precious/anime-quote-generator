@@ -1,19 +1,12 @@
+import { useRecoilValue } from "recoil";
 import styled from "styled-components";
 import AnimePill from "../../components/AnimePill/AnimePill";
 import Quote from "../../components/Quote/Quote";
+import { animeTitles } from "../../store";
 
 const Homepage = () => {
+	const animes = useRecoilValue(animeTitles);
 	const colors = ["#FAE1DA", "#E8C6AD", "#F2E2ED", "#D6EBE4", "#BFDCD0"];
-	const animes = [
-		"Naruto",
-		"Hellsing",
-		"Naruto",
-		"Hellsing",
-		"Naruto",
-		"Hellsing",
-		"Naruto",
-		"Hellsing",
-	];
 
 	const generateColor = () => {
 		const randNum = Math.floor(Math.random() * 5);
@@ -32,7 +25,7 @@ const Homepage = () => {
 					<p>Click on any anime to see a quote from it</p>
 					<div className="flex">
 						{animes?.map((anime) => (
-							<div style={{ margin: "0 1.2rem 1.2rem 0" }}>
+							<div key={anime} style={{ margin: "0 1.2rem 1.2rem 0" }}>
 								<AnimePill anime={anime} color={generateColor()} />
 							</div>
 						))}

@@ -1,6 +1,6 @@
 import styled from "styled-components";
-import AnimePill from "./components/AnimePill/AnimePill";
-import Quote from "./components/Quote/Quote";
+import AnimePill from "../../components/AnimePill/AnimePill";
+import Quote from "../../components/Quote/Quote";
 
 const Homepage = () => {
 	const colors = ["#FAE1DA", "#E8C6AD", "#F2E2ED", "#D6EBE4", "#BFDCD0"];

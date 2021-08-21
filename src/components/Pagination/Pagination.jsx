@@ -1,10 +1,10 @@
-import { useSetRecoilState } from "recoil";
+import { useRecoilState } from "recoil";
 import { useState, useEffect } from "react";
 import styled from "styled-components";
 import { animeListPageNum } from "../../store";
 
 const Pagination = ({ listLength }) => {
-	const setPageNum = useSetRecoilState(animeListPageNum);
+	const [pageNum, setPageNum] = useRecoilState(animeListPageNum);
 	const [numsArr, setNumsArr] = useState([]);
 
 	useEffect(() => {
@@ -30,7 +30,11 @@ const Pagination = ({ listLength }) => {
 		<StyledPagination>
 			{numsArr?.length
 				? numsArr?.map((num) => (
-						<button onClick={() => setPageNum(num)} key={num}>
+						<button
+							className={pageNum === num ? "active" : ""}
+							onClick={() => setPageNum(num)}
+							key={num}
+						>
 							{num + 1}
 						</button>
 				  ))
@@ -56,6 +60,11 @@ const StyledPagination = styled.div`
 		display: flex;
 		align-items: center;
 		justify-content: center;
+
+		&:hover,
+		&.active {
+			background: #fae1da;
+		}
 	}
 `;
 

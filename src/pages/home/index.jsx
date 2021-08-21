@@ -30,7 +30,7 @@ const Homepage = () => {
 					<div className="flex">
 						{animes?.length ? (
 							slicedAnimes?.map((anime) => (
-								<div key={anime} style={{ margin: "0 1.2rem 1.2rem 0" }}>
+								<div key={anime} style={{ margin: "0 1.3rem 1.3rem 0" }}>
 									<AnimePill anime={anime} color={generateColor()} />
 								</div>
 							))
@@ -75,11 +75,12 @@ const StyledHomePage = styled.div`
 		}
 
 		& > p {
-			margin: 1rem 0;
+			margin: 1.2rem 0;
 		}
 
 		& > .flex {
 			display: flex;
+			justify-content: center;
 			flex-wrap: wrap;
 
 			& > .nodata {

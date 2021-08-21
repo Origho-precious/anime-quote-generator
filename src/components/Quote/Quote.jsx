@@ -2,11 +2,12 @@ import styled from "styled-components";
 
 const Quote = () => {
 	const quote = {
-		anime: "Sekai Ichi Hatsukoi",
-		character: "Ritsu Onodera",
+		anime: "Naruto",
+		character: "Pain",
 		quote:
-			"Maybe it would be just like in the mangas. I'd tell him I love him and then we cut to the happy ending.",
+			"Because of the existence of love - sacrifice is born. As well as hate. Then one comprehends... one knows PAIN.",
 	};
+
 	return (
 		<StyledQuote>
 			<p>"{quote.quote}"</p>
@@ -24,16 +25,16 @@ const StyledQuote = styled.div`
 	display: flex;
 	flex-direction: column;
 	align-items: center;
-  
+
 	& > p {
-    font-size: 2rem;
+		font-size: 2rem;
 		letter-spacing: 2px;
 		text-align: center;
 		font-style: italic;
 		margin-bottom: 3rem;
 		background: #fff;
-    border-radius: 0.5rem;
-    padding: 3rem;
+		border-radius: 0.5rem;
+		padding: 3rem;
 	}
 
 	& > h4 {

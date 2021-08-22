@@ -7,9 +7,11 @@ import SmallQuote from "../../components/SmallQuote/SmallQuote";
 const Animepage = () => {
 	const param = useParams();
 	const [quotes, setQuotes] = useState([]);
+	const [loading, setLoading] = useState(false);
 
 	useEffect(() => {
 		if (param?.name) {
+			setLoading(true);
 			const fetchAnimeQuotes = async () => {
 				try {
 					const res = await axios.get(
@@ -17,8 +19,10 @@ const Animepage = () => {
 					);
 
 					setQuotes(res?.data);
+					setLoading(false);
 				} catch (error) {
 					console.log(error);
+					setLoading(false);
 				}
 			};
 
@@ -31,7 +35,9 @@ const Animepage = () => {
 			<h2>Quotes from {param?.name}</h2>
 			<Link to="/">Go back</Link>
 			<div className="grid">
-				{quotes?.length ? (
+				{loading ? (
+					<p>Loading...</p>
+				) : quotes?.length ? (
 					quotes?.map((quote, index) => (
 						<div key={quote?.quote + index} className="anime">
 							<SmallQuote
@@ -56,8 +62,8 @@ const StyledAnimePage = styled.div`
 
 	& > a {
 		position: absolute;
-    top: 1rem;
-    text-decoration: none;
+		top: 1rem;
+		text-decoration: none;
 	}
 
 	& > h2 {
@@ -70,13 +76,14 @@ const StyledAnimePage = styled.div`
 	& > .grid {
 		display: grid;
 		grid-template-columns: repeat(2, 1fr);
+		grid-template-rows: max-content;
 
 		& .anime {
 			margin: 1rem;
 			height: max-content;
 		}
 
-		& > .nodata {
+		& > p {
 			margin: 2rem 0 4rem;
 			font-size: 1.3rem;
 			text-align: center;

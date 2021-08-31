@@ -40,7 +40,7 @@ const Homepage = () => {
 					</div>
 					{animes?.length > 50 ? (
 						<div className="pagination">
-							<Pagination activeNum={5} listLength={animes?.length} />
+							<Pagination listLength={animes?.length} />
 						</div>
 					) : null}
 				</div>

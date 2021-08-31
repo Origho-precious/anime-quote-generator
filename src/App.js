@@ -2,8 +2,8 @@ import { useEffect } from "react";
 import { BrowserRouter, Route, Switch } from "react-router-dom";
 import { useSetRecoilState } from "recoil";
 import axios from "axios";
-import Homepage from "./pages/home";
 import { animeTitles } from "./store";
+import Homepage from "./pages/home";
 import Animepage from "./pages/anime";
 
 const App = () => {

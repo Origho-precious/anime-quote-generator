@@ -1,5 +1,5 @@
-import { useRecoilState } from "recoil";
 import { useState, useEffect } from "react";
+import { useRecoilState } from "recoil";
 import styled from "styled-components";
 import { animeListPageNum } from "../../store";
 
